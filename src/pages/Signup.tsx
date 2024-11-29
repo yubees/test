@@ -7,7 +7,7 @@ import { Eye, EyeOff, Loader } from 'lucide-react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-// import Github from '../component/Github'
+import Github from './components/Github'
 // import Google from '../component/Google'
 // import { onRegisterSubmit } from '@/api/RegisterUser'
 
@@ -156,10 +156,10 @@ const SignUp: React.FC = () => {
               </div>
               {/* <div className="">
                 <Google />
-              </div>
+              </div> */}
               <div className="">
                 <Github />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
