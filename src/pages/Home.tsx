@@ -22,6 +22,8 @@ const Home: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]);
 
 
+
+
     const handleData = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API}/post/getAllPost`, {
@@ -29,7 +31,6 @@ const Home: React.FC = () => {
             })
 
             const data = await response.json();
-            console.log(data)
             setPosts(data);
 
         } catch (error) {
