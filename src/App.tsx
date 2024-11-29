@@ -3,6 +3,7 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './Home';
 import Profile from './Profile';
+import SignUp from './pages/Signup';
 
 
 function App() {
@@ -15,7 +16,12 @@ function App() {
     {
       path: "/profile",
       element: <Profile />,
-    },])  
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
+    }
+  ])  
 
   return (
     <>
