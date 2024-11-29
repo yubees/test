@@ -6,9 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Eye, EyeOff, Loader } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from "react-router-dom"
-// import Google from '../component/Google'
 import { LoginSchema } from '@/schema/LoginSchema'
 import Github from './components/Github'
+import Google from './components/Google'
 // import { onLoginSubmit } from '@/api/LoginUser'
 
 
@@ -200,7 +200,7 @@ const SignIn: React.FC = () => {
                                 <span className="mx-[0.625rem] text-muted-foreground">or</span>
                                 <hr className="flex-1 border-t" />
                             </div>
-                            {/* <Google /> */}
+                            <Google />
                             {authLoading ?
                                 <Button className="w-full py-[0.625rem] px-[0.875rem]">
                                     <Loader className="h-6 animate-spin" />

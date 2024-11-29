@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import Github from './components/Github'
-// import Google from '../component/Google'
+import Google from './components/Google'
 // import { onRegisterSubmit } from '@/api/RegisterUser'
 
 const SignUp: React.FC = () => {
@@ -35,7 +35,7 @@ const SignUp: React.FC = () => {
   const [isRegistered, setIsRegistered] = useState(false);
 
 
- 
+
 
 
   const email = registrationForm.getValues("email");
@@ -43,7 +43,7 @@ const SignUp: React.FC = () => {
   const handleSubmitClick = registrationForm.handleSubmit(async (data) => {
     const { fullName, email, password } = data;
 
-    console.log(fullName,email,password)
+    console.log(fullName, email, password)
     navigate("")
     setIsRegistered(false)
     setIsLoading(false)
@@ -154,9 +154,9 @@ const SignUp: React.FC = () => {
                 <span className="mx-[0.625rem] text-muted-foreground">or</span>
                 <hr className="flex-1 border-t" />
               </div>
-              {/* <div className="">
+              <div className="">
                 <Google />
-              </div> */}
+              </div>
               <div className="">
                 <Github />
               </div>
