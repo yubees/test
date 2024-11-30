@@ -1,7 +1,6 @@
 
 import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Profile from './Profile';
 import SignUp from './pages/Signup';
 import SignIn from './pages/Signin';
 import Home from './pages/Home';
@@ -10,6 +9,7 @@ import Email from './pages/Email';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import CenterLayout from './pages/components/CenterOutlet';
+import AdminPanel from './pages/AdminPanel';
 
 
 function App() {
@@ -20,8 +20,10 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/profile",
-      element: <Profile />,
+      path: "/:userName",
+      element: (
+        <AdminPanel />
+      ),
     },
     {
       element: <CenterLayout />,
