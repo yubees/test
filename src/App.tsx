@@ -10,6 +10,10 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import CenterLayout from './pages/components/CenterOutlet';
 import AdminPanel from './pages/AdminPanel';
+import WritePost from './pages/WritePost';
+import BlogLayout from './pages/components/BlogOutlet';
+import Post from './pages/Post';
+import UserBlog from './pages/UserBlog';
 
 
 function App() {
@@ -51,8 +55,28 @@ function App() {
         {
           path: "/resetPassword",
           element: <ResetPassword />,
-        }
+        },
+        {
+          path: "/demo",
+          element: <WritePost />,
+        },
       ],
+    },
+    {
+      element: <BlogLayout />,
+      children: [
+        {
+          path: "/post",
+          element: <Post />,
+        },
+        {
+          path: "/posts/:userName",
+          element: (
+            <UserBlog />
+          ),
+        },
+  
+      ]
     },
   ])
   const id = import.meta.env.VITE_GOOGLE_ID as string
