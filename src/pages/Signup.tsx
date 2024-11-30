@@ -35,10 +35,6 @@ const SignUp: React.FC = () => {
 
   const [isRegistered, setIsRegistered] = useState(false);
 
-
-
-
-
   const email = registrationForm.getValues("email");
 
   const handleSubmitClick = registrationForm.handleSubmit(async (data) => {

@@ -102,10 +102,10 @@ const SignIn: React.FC = () => {
         }
     }, [navigate, rerender])
     return (
-        <div className="py-8 md:py-[3.75rem]">
+        <div className="sm:py-8 md:py-[3.75rem]">
 
-            <div className="mx-auto w-[408px] px-6 py-8 ">
-                <div className="space-y-9 w-[360px]  mx-auto">
+            <div className=" sm:w-[408px] sm:px-6 sm:py-8 ">
+                <div className="space-y-9 w-[22rem] sm:w-[360px]  mx-auto">
                     {/* <Link to={"/"}>
             <img src="/Lucia.svg" alt="logo" className='h-8 dark:saturate-0 dark:brightness-50 dark:invert' />
           </Link> */}
