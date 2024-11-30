@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import HeaderCard from './components/HeaderCard';
 import Card from './components/Card';
@@ -43,7 +42,7 @@ const Home: React.FC = () => {
     }, [])
 
     return (
-        <div className="flex items-center justify-center w-[100vw] bg-black h-full">
+        <div className="flex items-center justify-center w-[100vw] bg-black min-h-[100vh]">
             <div className='p-4 w-full text-white flex justify-center items-center'>
                 <div className="max-w-[1200px] w-full">
                     <div className=' my-2 md:my-16 flex items-center'>

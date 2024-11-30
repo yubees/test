@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import Github from './components/Github'
 import Google from './components/Google'
+import { onRegisterSubmit } from '@/api/RegisterUser'
 // import { onRegisterSubmit } from '@/api/RegisterUser'
 
 const SignUp: React.FC = () => {
@@ -42,18 +43,12 @@ const SignUp: React.FC = () => {
 
   const handleSubmitClick = registrationForm.handleSubmit(async (data) => {
     const { fullName, email, password } = data;
-
-    console.log(fullName, email, password)
-    navigate("")
-    setIsRegistered(false)
-    setIsLoading(false)
-
-    // await onRegisterSubmit(
-    //   { fullName, email, password },
-    //   setIsLoading,
-    //   setIsRegistered,
-    //   navigate
-    // );
+    await onRegisterSubmit(
+      { fullName, email, password },
+      setIsLoading,
+      setIsRegistered,
+      navigate
+    );
   });
 
 

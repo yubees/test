@@ -5,6 +5,7 @@ import Profile from './Profile';
 import SignUp from './pages/Signup';
 import SignIn from './pages/Signin';
 import Home from './pages/Home';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 function App() {
@@ -26,11 +27,17 @@ function App() {
       path: "/signin",
       element: <SignIn />,
     }
-  ])  
+  ])
+  const id = import.meta.env.VITE_GOOGLE_ID as string
+
 
   return (
+
     <>
-    <RouterProvider router={router}/>
+      <GoogleOAuthProvider clientId={id}>
+        <RouterProvider router={router} />
+      </GoogleOAuthProvider>
+
     </>
   )
 }

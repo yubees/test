@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { LoginSchema } from '@/schema/LoginSchema'
 import Github from './components/Github'
 import Google from './components/Google'
+import { onLoginSubmit } from '@/api/LoginUser'
 // import { onLoginSubmit } from '@/api/LoginUser'
 
 
@@ -45,12 +46,12 @@ const SignIn: React.FC = () => {
 
     const handleSubmitClick = loginForm.handleSubmit(async (data) => {
         const { email, password } = data;
-        console.log({ email, password })
-        setIsLoading(false)
-        navigate("")
-        // await onLoginSubmit(
 
-        // );
+        await onLoginSubmit(
+            { email, password },
+            setIsLoading,
+            navigate
+        );
     });
 
     const [rerender, setRerender] = useState(false)
