@@ -184,7 +184,7 @@ const AdminPanel = () => {
           <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
             Recent Posts
           </h1>
-          <Link to="/demo">
+          <Link to="/write">
             <Button variant="secondary" className=' md:h-14 md:w-28 text-[1rem] text-center md:text-[1.5rem]'>Post</Button>
           </Link>
         </div>
