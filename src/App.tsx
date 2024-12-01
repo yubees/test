@@ -56,10 +56,6 @@ function App() {
           path: "/resetPassword",
           element: <ResetPassword />,
         },
-        {
-          path: "/demo",
-          element: <WritePost />,
-        },
       ],
     },
     {
@@ -74,6 +70,10 @@ function App() {
           element: (
             <UserBlog />
           ),
+        },
+        {
+          path: "/write",
+          element: <WritePost />,
         },
   
       ]

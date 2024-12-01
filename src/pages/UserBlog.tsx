@@ -2,6 +2,7 @@ import { Home } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import Card from './components/Card';
+import { CardSkeleton } from '@/skeleton/CardSkeleton';
 
 
 interface Post {
@@ -72,15 +73,17 @@ const UserBlog: React.FC = () => {
             <div className="max-w-[1200px] w-full">
                 <div className='my-4 md:my-16 flex items-center justify-between'>
                     <h1 className='text-[2rem] md:text-[3.5rem] text-white'>
-                        {author}'s  Blog
+                        {author}  Blog
                     </h1>
-                    <Link to="/home">
+                    <Link to="/">
                         <Home className=" h-14 w-8 md:w-10 text-white" />
                     </Link>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
-                    {loading ? <p className=' text-xl md:text-3xl'>Loading .....</p> : <>
+                    {loading ? Array(6)
+                      .fill(null)
+                      .map((_, index) => <CardSkeleton key={index} />) : <>
                         {posts.length > 0 ? (
                             posts.reverse().map((post, index) => (
                                 <Card

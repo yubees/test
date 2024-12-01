@@ -84,7 +84,7 @@ const WritePost = () => {
     <div className=" h-[100vh] w-[100vw] bg-black text-white flex justify-center items-center">
       <div className=" w-full p-5 sm:w-[35rem] mr-3 py-10 space-y-5">
         <div className=" flex justify-end">
-          <Link to="/home">
+          <Link to="/">
             <Home className=" h-14 w-10 text-white" />
           </Link>
         </div>

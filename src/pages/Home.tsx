@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import HeaderCard from './components/HeaderCard';
 import Card from './components/Card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { HeaderCardSkeleton } from '@/skeleton/HeaderCardSkeleton';
+import { CardSkeleton } from '@/skeleton/CardSkeleton';
 
 
 interface Post {
@@ -16,29 +17,8 @@ interface Post {
     authorId: number
 }
 
-export function HeaderSkeletonCard() {
-    return (
-        <div className="flex flex-col space-y-3">
-            <Skeleton className=" h-[250px] sm:h-[200px] md:h-[350px] w-full rounded-lg bg-gray-900" />
-            <div className="space-y-2">
-                <Skeleton className="h-4 w-[70%] bg-gray-900" />
-                <Skeleton className="h-4 w-[50%] bg-gray-900" />
-            </div>
-        </div>
-    );
-}
 
-export function SkeletonCard() {
-    return (
-        <div className="flex flex-col space-y-3">
-            <Skeleton className=" w-full h-[250px] sm:h-[200px] md:h-[250px] rounded-lg bg-gray-900" />
-            <div className="space-y-2">
-                <Skeleton className="h-4 w-[70%] bg-gray-900" />
-                <Skeleton className="h-4 w-[50%] bg-gray-900" />
-            </div>
-        </div>
-    );
-}
+
 
 const Home: React.FC = () => {
 
@@ -86,7 +66,7 @@ const Home: React.FC = () => {
                     {loading
                 ? Array(2)
                       .fill(null)
-                      .map((_, index) => <HeaderSkeletonCard key={index} />)
+                      .map((_, index) => <HeaderCardSkeleton key={index} />)
                 : posts
                       .sort((a, b) => b.id - a.id)
                       .slice(0, 2)
@@ -109,7 +89,7 @@ const Home: React.FC = () => {
                     {loading
                 ? Array(6)
                       .fill(null)
-                      .map((_, index) => <SkeletonCard key={index} />)
+                      .map((_, index) => <CardSkeleton key={index} />)
                 : posts.sort((a, b) => b.id - a.id).map((post, index) => (
                     <Card
                         key={index}
