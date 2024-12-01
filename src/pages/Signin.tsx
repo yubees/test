@@ -10,7 +10,6 @@ import { LoginSchema } from '@/schema/LoginSchema'
 import Github from './components/Github'
 import Google from './components/Google'
 import { onLoginSubmit } from '@/api/LoginUser'
-// import { onLoginSubmit } from '@/api/LoginUser'
 
 
 
@@ -85,7 +84,7 @@ const SignIn: React.FC = () => {
                             const data = await response.json()
                             setAuthLoading(false)
 
-                            if (data.message === "User registered successfully" || data.message === "User added with Github Sucessfully!") {
+                            if (data.message === "User registered successfully" || data.message === "User signed in" || data.message === "User added with Github Sucessfully!") {
                                 localStorage.setItem("userToken", data.userId)
                                 navigate(`/${data.user}`)
                             }

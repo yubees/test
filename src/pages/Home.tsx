@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import HeaderCard from './components/HeaderCard';
 import Card from './components/Card';
+import { Skeleton } from '@/components/ui/skeleton';
 
 
 interface Post {
@@ -15,15 +16,42 @@ interface Post {
     authorId: number
 }
 
+export function HeaderSkeletonCard() {
+    return (
+        <div className="flex flex-col space-y-3">
+            <Skeleton className=" h-[250px] sm:h-[200px] md:h-[350px] w-full rounded-lg bg-gray-900" />
+            <div className="space-y-2">
+                <Skeleton className="h-4 w-[70%] bg-gray-900" />
+                <Skeleton className="h-4 w-[50%] bg-gray-900" />
+            </div>
+        </div>
+    );
+}
+
+export function SkeletonCard() {
+    return (
+        <div className="flex flex-col space-y-3">
+            <Skeleton className=" w-full h-[250px] sm:h-[200px] md:h-[250px] rounded-lg bg-gray-900" />
+            <div className="space-y-2">
+                <Skeleton className="h-4 w-[70%] bg-gray-900" />
+                <Skeleton className="h-4 w-[50%] bg-gray-900" />
+            </div>
+        </div>
+    );
+}
+
 const Home: React.FC = () => {
 
 
     const [posts, setPosts] = useState<Post[]>([]);
+    const [loading,setLoading] = useState<boolean>(true)
 
 
 
 
     const handleData = async () => {
+        setLoading(true)
+
         try {
             const response = await fetch(`${import.meta.env.VITE_API}/post/getAllPost`, {
                 method: "GET"
@@ -31,9 +59,12 @@ const Home: React.FC = () => {
 
             const data = await response.json();
             setPosts(data);
+            setLoading(false)
+
 
         } catch (error) {
             console.log(error)
+            setLoading(true)
         }
     }
 
@@ -52,35 +83,46 @@ const Home: React.FC = () => {
 
                     </div>
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 w-full my-10 md:my-12'>
-                        {posts.sort((a, b) => b.id - a.id).slice(0, 2).map((post, index) => (
-                            <HeaderCard
-                                key={index}
-                                title={post.title}
-                                author={post.authorName}
-                                date={post.createdAt}
-                                imgSrc={post.image}
-                                authorsrc={post.authorAvatar}
-                                content={post.content}
-                                authorId={post.authorId}
-                            />
-                        ))}
+                    {loading
+                ? Array(2)
+                      .fill(null)
+                      .map((_, index) => <HeaderSkeletonCard key={index} />)
+                : posts
+                      .sort((a, b) => b.id - a.id)
+                      .slice(0, 2)
+                      .map((post, index) => (
+                          <HeaderCard
+                              key={index}
+                              title={post.title}
+                              author={post.authorName}
+                              date={post.createdAt}
+                              imgSrc={post.image}
+                              authorsrc={post.authorAvatar}
+                              content={post.content}
+                              authorId={post.authorId}
+                          />
+                      ))}
 
                     </div>
                     <p className=' my-9 text-2xl'>Latest Posts</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                        {posts.sort((a, b) => b.id - a.id).map((post, index) => (
-                            <Card
-                                key={index}
-                                title={post.title}
-                                author={post.authorName}
-                                date={post.createdAt}
-                                imgSrc={post.image}
-                                authorsrc={post.authorAvatar}
-                                content={post.content}
-                                authorId={post.authorId}
-                                postId={post.id}
-                            />
-                        ))}
+                    {loading
+                ? Array(6)
+                      .fill(null)
+                      .map((_, index) => <SkeletonCard key={index} />)
+                : posts.sort((a, b) => b.id - a.id).map((post, index) => (
+                    <Card
+                        key={index}
+                        title={post.title}
+                        author={post.authorName}
+                        date={post.createdAt}
+                        imgSrc={post.image}
+                        authorsrc={post.authorAvatar}
+                        content={post.content}
+                        authorId={post.authorId}
+                        postId={post.id}
+                    />
+                ))}
                     </div>
 
                 </div>
