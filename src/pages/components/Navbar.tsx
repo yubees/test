@@ -9,11 +9,13 @@ const Navbar: React.FC = () => {
                 <Link className=' link-style' to="/">Home</Link>
                 <Link className=' link-style' to="/profile">Profile</Link>
             </div>
-            <div className='space-x-4 sm:space-x-10'>
+            <div className=' flex space-x-4 sm:space-x-10'>
                 <Link className=' link-style' to="/signin">
-                    <Button className=' bg-white text-black hover:text-white'>Sign In</Button></Link>
+                    <Button className=' bg-white text-black hover:text-white'>Sign In</Button>
+                </Link>
                 <Link className=' link-style' to="/signup">
-                <Button className=' bg-white text-black hover:text-white'>Sign Up</Button></Link>
+                    <Button className=' bg-white text-black hover:text-white'>Sign Up</Button>
+                </Link>
             </div>
         </div>
     )
