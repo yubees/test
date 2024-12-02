@@ -14,6 +14,7 @@ import WritePost from './pages/WritePost';
 import BlogLayout from './pages/components/BlogOutlet';
 import Post from './pages/Post';
 import UserBlog from './pages/UserBlog';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -27,6 +28,12 @@ function App() {
       path: "/:userName",
       element: (
         <AdminPanel />
+      ),
+    },
+    {
+      path: "/profile",
+      element: (
+        <Profile />
       ),
     },
     {
