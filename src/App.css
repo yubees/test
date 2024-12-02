@@ -13,6 +13,10 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.link-style {
+  @apply no-underline text-gray-200 hover:text-gray-200 pb-14 md:pb-16;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
