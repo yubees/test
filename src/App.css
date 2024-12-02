@@ -14,7 +14,7 @@
 }
 
 .link-style {
-  @apply no-underline text-gray-200 hover:text-gray-200 pb-14 md:pb-16;
+  @apply no-underline text-gray-200 hover:text-gray-200;
 }
 
 @keyframes logo-spin {
