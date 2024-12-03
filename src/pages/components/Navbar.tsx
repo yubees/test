@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
     const navigate = useNavigate()
 
 
-    const handleSignOut = ()=>{
+    const handleSignOut = () => {
         localStorage.removeItem("userToken");
         navigate("/signin")
 
@@ -64,21 +64,23 @@ const Navbar: React.FC = () => {
                         </> :
                         <>
 
-                           {
-                            posts ? <>
-                             <Avatar className="h-8 w-8">
-                                <AvatarImage src={posts.avatarLink} alt="" />
-                                <AvatarFallback className="text-sm">""</AvatarFallback>
-                            </Avatar>
-                            </>:<>
-                            <Avatar className="h-8 w-8">
-                                <AvatarImage src="" alt="" />
-                                <AvatarFallback className="text-sm">Y</AvatarFallback>
-                            </Avatar></>
-                           }
-                            <Button 
-                            onClick={handleSignOut}
-                            className=' bg-white text-black hover:text-white'>Sign Out</Button>
+                            {
+                                posts ? <>
+                                    <Link to={`/${posts.fullName}`}>
+                                        <Avatar className="h-8 w-8">
+                                            <AvatarImage src={posts.avatarLink} alt="" />
+                                            <AvatarFallback className="text-sm">Y</AvatarFallback>
+                                        </Avatar>
+                                    </Link>
+                                </> : <>
+                                    <Avatar className="h-8 w-8">
+                                        <AvatarImage src="" alt="" />
+                                        <AvatarFallback className="text-sm">Y</AvatarFallback>
+                                    </Avatar></>
+                            }
+                            <Button
+                                onClick={handleSignOut}
+                                className=' bg-white text-black hover:text-white'>Sign Out</Button>
 
                         </>
                 }
