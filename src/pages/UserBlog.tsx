@@ -1,8 +1,8 @@
-import { Home } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Card from './components/Card';
 import { CardSkeleton } from '@/skeleton/CardSkeleton';
+import Navbar from './components/Navbar';
 
 
 interface Post {
@@ -41,7 +41,7 @@ const UserBlog: React.FC = () => {
         } catch (error) {
             console.log(error)
         }
-    
+
     }
 
     useEffect(() => {
@@ -63,27 +63,26 @@ const UserBlog: React.FC = () => {
         }
         getUserId()
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     console.log(userPost)
 
     return (
-        <div className='p-4 w-full text-white flex justify-center items-center'>
-            <div className="max-w-[1200px] w-full">
-                <div className='my-4 md:my-16 flex items-center justify-between'>
+        <div className="flex text-white justify-center sm:px-4 w-[100vw] bg-black min-h-[100vh]">
+            <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
+                <Navbar />
+                <div className='my-4 md:pt-2 pb-4 md:pb-10 md:my-16 flex items-center justify-between'>
                     <h1 className='text-[2rem] md:text-[3.5rem] text-white'>
                         {author}  Blog
                     </h1>
-                    <Link to="/">
-                        <Home className=" h-14 w-8 md:w-10 text-white" />
-                    </Link>
+
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
                     {loading ? Array(6)
-                      .fill(null)
-                      .map((_, index) => <CardSkeleton key={index} />) : <>
+                        .fill(null)
+                        .map((_, index) => <CardSkeleton key={index} />) : <>
                         {posts.length > 0 ? (
                             posts.reverse().map((post, index) => (
                                 <Card

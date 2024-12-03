@@ -179,15 +179,15 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="flex text-white justify-center w-[100vw] bg-black min-h-[100vh]">
+    <div className="flex text-white justify-center sm:px-4 w-[100vw] bg-black min-h-[100vh]">
       <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
         <Navbar />
-        <div className=' my-2 md:my-16 flex items-center justify-between'>
+        <div className=' my-4 md:pt-2 pb-4 md:pb-10 flex items-center justify-between'>
           <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
             Recent Posts
           </h1>
           <Link to="/write">
-            <Button variant="secondary" className=' md:h-14 md:w-28 text-[1rem] text-center md:text-[1.5rem]'>Post</Button>
+            <Button className='bg-white text-black hover:text-white'>Post</Button>
           </Link>
         </div>
         {isFormVisible && (
@@ -223,48 +223,50 @@ const AdminPanel = () => {
             </div>
           </div>
         )}
-        <Table className=" text-sm sm:text-xl">
-          <TableHeader>
-            <TableRow >
-              <TableHead className=" w-max sm:[w-20rem] md:w-[25rem] lg:w-[35rem] text-white">Title</TableHead>
-              <TableHead className=" text-white">Created</TableHead>
-              <TableHead className="sm:w-[100px] text-white">Edit</TableHead>
-              <TableHead className="sm:w-[100px] text-white">Delete</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody className=" h-auto">
-            {
-              (currentPosts.length > 0 ? (
-                currentPosts.map((post) => (
-                  <TableRow key={post.id}>
-                    <TableCell className=" font-light">{post.title}</TableCell>
-                    <TableCell className=" font-light">{format(new Date(post.createdAt), "MMM d, yyyy")}</TableCell>
-                    <TableCell
-                      className="cursor-pointer pl-4"
-                      onClick={() => handleEditClick(post)}
-                    >
-                      <Pen className=" text-blue-600" />
-                    </TableCell>
-                    <TableCell
-                      className=" pl-6 cursor-pointer"
-                      onClick={() => deletePost(post.id)}
-                    >
-                      <Trash className=" text-red-500" />
+        <div className=" rounded-md border">
+          <Table className=" text-sm sm:text-xl">
+            <TableHeader>
+              <TableRow >
+                <TableHead className=" w-max sm:[w-20rem] md:w-[25rem] lg:w-[35rem] text-white">Title</TableHead>
+                <TableHead className=" text-white">Created</TableHead>
+                <TableHead className="sm:w-[100px] text-white">Edit</TableHead>
+                <TableHead className="sm:w-[100px] text-white">Delete</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className=" h-auto">
+              {
+                (currentPosts.length > 0 ? (
+                  currentPosts.map((post) => (
+                    <TableRow key={post.id}>
+                      <TableCell className=" font-light">{post.title}</TableCell>
+                      <TableCell className=" font-light">{format(new Date(post.createdAt), "MMM d, yyyy")}</TableCell>
+                      <TableCell
+                        className="cursor-pointer pl-4"
+                        onClick={() => handleEditClick(post)}
+                      >
+                        <Pen className=" text-blue-600" />
+                      </TableCell>
+                      <TableCell
+                        className=" pl-6 cursor-pointer"
+                        onClick={() => deletePost(post.id)}
+                      >
+                        <Trash className=" text-red-500" />
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={4} className="text-center font-medium">
+                      No posts available
                     </TableCell>
                   </TableRow>
                 ))
-              ) : (
-                <TableRow>
-                  <TableCell colSpan={4} className="text-center font-medium">
-                    No posts available
-                  </TableCell>
-                </TableRow>
-              ))
 
-            }
-          </TableBody>
+              }
+            </TableBody>
 
-        </Table>
+          </Table>
+        </div>
         <Pagination>
           <PaginationContent>
             <PaginationItem>

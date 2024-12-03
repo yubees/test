@@ -60,11 +60,11 @@ const Home: React.FC = () => {
                     <Navbar />
                     <div className=' my-2 md:my-4 flex items-center'>
                         <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
-                            Blog
+                            Featured Post
                         </h1>
 
                     </div>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 w-full my-10 md:my-12'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 w-full my-4 md:my-12'>
                         {loading
                             ? Array(2)
                                 .fill(null)
@@ -89,9 +89,11 @@ const Home: React.FC = () => {
                     <p className=' my-9 text-2xl'>Latest Posts</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                         {loading
-                            ? Array(6)
-                                .fill(null)
-                                .map((_, index) => <CardSkeleton key={index} />)
+                            ? <>
+                                <CardSkeleton />
+                                <CardSkeleton />
+                                <CardSkeleton />
+                            </>
                             : posts.sort((a, b) => b.id - a.id).map((post, index) => (
                                 <Card
                                     key={index}

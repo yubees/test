@@ -6,8 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import { Client, Storage, ID } from 'appwrite';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
-import { Home } from "lucide-react";
+import Navbar from "./components/Navbar";
 
 
 
@@ -32,6 +31,25 @@ const WritePost = () => {
 
     try {
       setIsLoading(true);
+      if (!title) {
+        console.log(desc.length)
+        alert('Title is required')
+        setIsLoading(false);
+        
+        return
+      }
+      if (!fileUrl) {
+        alert('Cover Image is required')
+        setIsLoading(false);
+        return
+      }
+      if (desc.length<10) {
+        alert('Description should be atleast 10 words')
+        setIsLoading(false);
+       
+        return
+      }
+
       const response = await fetch(
         `${import.meta.env.VITE_API}/post/create/${id}`, // Replace `id` with your actual dynamic value
         {
@@ -77,31 +95,29 @@ const WritePost = () => {
       }
     } else {
       console.log('No file selected');
+      alert('No file selected')
     }
   };
 
   return (
-    <div className=" h-[100vh] w-[100vw] bg-black text-white flex justify-center items-center">
-      <div className=" w-full p-5 sm:w-[35rem] mr-3 py-10 space-y-5">
-        <div className=" flex justify-end">
-          <Link to="/">
-            <Home className=" h-14 w-10 text-white" />
-          </Link>
-        </div>
-        <Label htmlFor="title" className=" text-xl">Title</Label>
-        <Input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <Label htmlFor="image" className=" text-xl">Upload cover image</Label>
+    <div className="flex text-white justify-center sm:px-4 w-[100vw] bg-black min-h-[100vh]">
+      <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
+        <Navbar />
+        <div className=" space-y-4 sm:space-y-6 md:px-20 lg:px-52">
+          <Label htmlFor="title" className=" text-xl">Blog Title</Label>
+          <Input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <br />
+          <Label htmlFor="image" className=" text-xl">Upload cover image</Label>
 
-        <Input className=" bg-white text-black" type="file" id="uploader" accept="image/*" />
-        <Button onClick={handleImageUpload}> {upload ? "Uploaded" : "Upload"}</Button>
+          <Input className=" bg-white text-black" required type="file" id="uploader" accept="image/*" />
+          <Button className=" w-full" onClick={handleImageUpload}> {upload ? "Uploaded" : "Upload"}</Button>
 
-        
+
           <ReactQuill
             theme="snow"
             className=" w-full h-20 md:h-56"
@@ -110,13 +126,14 @@ const WritePost = () => {
             value={desc}
             onChange={setDesc}
           />
-      <br />
-      <br />
-      <br className=" md:hidden"/>
+          <br />
+          <br />
+          <br className=" md:hidden" />
 
-        <Button onClick={handlePost} disabled={isLoading}>
-          {isLoading ? "Posting..." : "Post"}
-        </Button>
+          <Button className=" w-full" onClick={handlePost} disabled={isLoading}>
+            {isLoading ? "Posting..." : "Post"}
+          </Button>
+        </div>
       </div>
     </div>
   );

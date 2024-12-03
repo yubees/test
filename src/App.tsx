@@ -66,6 +66,10 @@ function App() {
       ],
     },
     {
+      path: "/write",
+      element: <WritePost />,
+    },
+    {
       element: <BlogLayout />,
       children: [
         {
@@ -78,11 +82,8 @@ function App() {
             <UserBlog />
           ),
         },
-        {
-          path: "/write",
-          element: <WritePost />,
-        },
-  
+
+
       ]
     },
   ])
