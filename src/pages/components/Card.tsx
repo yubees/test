@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({
                         src={imgSrc}
                         alt={title}
                     />
-                    <h1 className="mt-4 text-lg sm:text-lg md:text-1xl lg:text-2xl leading-tight font-semibold">
+                    <h1 className="mt-4 text-lg sm:text-lg md:text-1xl lg:text-2xl leading-tight font-semibold truncate overflow-hidden whitespace-nowrap">
                         {title}
                     </h1>
 

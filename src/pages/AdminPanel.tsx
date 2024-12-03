@@ -211,7 +211,8 @@ const AdminPanel = () => {
               />
               <br />
               <br />
-              <br className=" md:hidden" />              <div className=' flex gap-4 justify-center items-center'>
+              <br className=" md:hidden" />
+              <div className=' flex gap-4 justify-center items-center'>
                 <Button onClick={editPost}>
                   Edit
                 </Button>
@@ -225,12 +226,14 @@ const AdminPanel = () => {
             </div>
           </div>
         )}
-        <div className=" h-[16.5rem]">
+        <div className=" h-[23rem]">
           <div className=" rounded-md border">
             <Table className=" text-sm sm:text-xl">
               <TableHeader>
                 <TableRow >
-                  <TableHead className=" w-max sm:[w-20rem] md:w-[25rem] lg:w-[35rem] text-white">Title</TableHead>
+                  <TableHead
+                    className="p-4 truncate sm:w-[20rem] md:w-[25rem] lg:w-[35rem] text-white overflow-hidden whitespace-nowrap">
+                    Title</TableHead>
                   <TableHead className=" text-white">Created</TableHead>
                   <TableHead className="sm:w-[100px] text-white">Edit</TableHead>
                   <TableHead className="sm:w-[100px] text-white">Delete</TableHead>
@@ -241,7 +244,9 @@ const AdminPanel = () => {
                   (currentPosts.length > 0 ? (
                     currentPosts.map((post) => (
                       <TableRow key={post.id}>
-                        <TableCell className=" font-light">{post.title}</TableCell>
+                        <TableCell
+                          className="p-4 font-light sm:w-[20rem] md:w-[25rem] lg:w-[25rem] text-white truncate overflow-hidden whitespace-nowrap max-w-[10rem]">
+                          {post.title}</TableCell>
                         <TableCell className=" font-light">{format(new Date(post.createdAt), "MMM d, yyyy")}</TableCell>
                         <TableCell
                           className="cursor-pointer pl-4"

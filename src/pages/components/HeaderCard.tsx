@@ -26,10 +26,11 @@ const HeaderCard: React.FC<HeaderCardProps> = ({ authorId, title, author, date, 
                         src={imgSrc}
                         alt={title}
                     />
-                    <h1 className="my-4 text-lg sm:text-1xl md:text-2xl lg:text-3xl leading-tight font-semibold">
+                    <h1 className="my-4 text-lg sm:text-1xl md:text-2xl lg:text-3xl leading-tight font-semibold truncate overflow-hidden whitespace-nowrap ">
                         {title}
                     </h1>
                 </div>
+
             </Link>
             <Link to={`/posts/${author}`}
                 state={{ authorId, author }}

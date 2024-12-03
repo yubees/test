@@ -18,8 +18,9 @@ const Post: React.FC = () => {
                 <Navbar/>
                 <div className=' flex flex-col justify-center items-center space-y-4'>
                     <p className=' text-slate-300 text-sm font-semibold'>{format(new Date(date), "MMMM d, yyyy")}</p>
-                    <h1 className=' text-md md:text-6xl'>
-                        {title}</h1>
+                    <h1 className=' text-md md:text-6xl break-words w-full'>
+                        {title}
+                    </h1>
                     {/* <p className=' text-center text-slate-300 text-xl'>A week of connection, strategy, and learning.</p> */}
                     <Link to={`/posts/${author}`}
                         state={{ authorId, author }}>
@@ -41,7 +42,7 @@ const Post: React.FC = () => {
                     </div>
 
                     <div className='text-slate-400 space-y-6 font-semibold max-w-[700px] mr-2 w-full flex flex-col items-start justify-start'>
-                        <div className="ql-editor" dangerouslySetInnerHTML={{ __html: content }} />
+                        <div className="ql-editor break-words w-full" dangerouslySetInnerHTML={{ __html: content }} />
                     </div>
                 </div>
             </div>
