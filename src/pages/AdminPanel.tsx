@@ -129,7 +129,7 @@ const AdminPanel = () => {
 
     }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const deletePost = async (postId: number) => {
@@ -180,8 +180,8 @@ const AdminPanel = () => {
 
   return (
     <div className="flex text-white justify-center w-[100vw] bg-black min-h-[100vh]">
-      <div className="w-full p-5 lg:w-[60rem] mr-3 py-10 space-y-5">
-        <Navbar/>
+      <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
+        <Navbar />
         <div className=' my-2 md:my-16 flex items-center justify-between'>
           <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
             Recent Posts

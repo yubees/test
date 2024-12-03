@@ -45,7 +45,7 @@ const Profile = () => {
 
   return (
     <div className="flex text-white justify-center w-[100vw] bg-black min-h-[100vh]">
-      <div className="max-w-[1200px] w-full py-4 space-y-5">
+      <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
         <Navbar/>
         <div className=' my-2 md:my-16 flex items-center justify-between'>
           <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
