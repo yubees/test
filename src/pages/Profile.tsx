@@ -4,8 +4,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table"
 import { useEffect, useState } from "react";
@@ -31,7 +29,6 @@ const Profile = () => {
 
       const data = await response.json();
       setUsers(data.users);
-      console.log(data)
 
 
     } catch (error) {
@@ -55,11 +52,7 @@ const Profile = () => {
         </div>
         <div className=" rounded-md border md:mx-20 lg:mx-40">
           <Table className=" text-sm sm:text-xl">
-            <TableHeader>
-              <TableRow >
-                <TableHead className=" w-max sm:[w-20rem] md:w-[25rem] lg:w-[35rem] h-12 p-4 text-white">Full Name</TableHead>
-              </TableRow>
-            </TableHeader>
+
             <TableBody className=" h-auto">
               {
                 (users.length > 0 ? (
@@ -69,7 +62,7 @@ const Profile = () => {
                         className="link-style"
                         to={`/posts/${user.fullName}`}
                         state={{ authorId: user.id, author: user.fullName }}>
-                        <TableCell className=" font-light flex items-center gap-2">
+                        <TableCell className=" font-light flex items-center p-4 gap-2">
                           <Avatar className="h-10 w-10">
                             <AvatarImage src={user.avatarLink} alt="" />
                             <AvatarFallback className="text-sm bg-black font-bold">{user.fullName.charAt(0).toUpperCase()}</AvatarFallback>

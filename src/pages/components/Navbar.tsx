@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button'
+import { Home } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -46,9 +47,9 @@ const Navbar: React.FC = () => {
     }, [])
 
     return (
-        <div className=' text-white sticky top-0 z-10 bg-black flex justify-between text-lg sm:text-2xl py-2 sm:py-6'>
-            <div className='space-x-4 sm:space-x-10'>
-                <Link className=' link-style' to="/">Home</Link>
+        <div className=' text-white sticky top-0 z-10 bg-black flex justify-between items-center text-lg sm:text-2xl py-2 sm:py-6'>
+            <div className='space-x-4 sm:space-x-10 flex items-center'>
+                <Link className=' link-style' to="/"><Home className=' h-8 w-8'/></Link>
                 <Link className=' link-style' to="/profile">Profile</Link>
             </div>
             <div className=' flex items-center justify-center space-x-4 sm:space-x-6'>

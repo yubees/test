@@ -14,7 +14,7 @@ const Post: React.FC = () => {
     }, []);
     return (
         <div className="flex text-white sm:px-4 justify-center w-[100vw] bg-black min-h-[100vh]">
-            <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2 ">
+            <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-8 ">
                 <Navbar/>
                 <div className=' flex flex-col justify-center items-center space-y-4'>
                     <p className=' text-slate-300 text-sm font-semibold'>{format(new Date(date), "MMMM d, yyyy")}</p>

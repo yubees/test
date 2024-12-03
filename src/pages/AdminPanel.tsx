@@ -182,7 +182,7 @@ const AdminPanel = () => {
     <div className="flex text-white justify-center sm:px-4 w-[100vw] bg-black min-h-[100vh]">
       <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
         <Navbar />
-        <div className=' my-4 md:pt-2 pb-4 md:pb-10 flex items-center justify-between'>
+        <div className=' my-4 pt-8 md:pt-2 pb-4 md:pb-10 flex items-center justify-between'>
           <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
             Recent Posts
           </h1>
@@ -192,7 +192,7 @@ const AdminPanel = () => {
         </div>
         {isFormVisible && (
           <div className="fixed inset-0 z-10 bg-black text-black bg-opacity-70 flex justify-center items-center">
-            <div className="w-full p-5 lg:w-[35rem] m-5 py-10 space-y-5 bg-white rounded-lg shadow-lg">
+            <div className="w-full p-5 sm:w-[25rem] md:w-[30rem] lg:w-[35rem] m-5 py-10 space-y-5 bg-white rounded-lg shadow-lg">
               <Label htmlFor="title" className="text-xl">Title</Label>
               <Input
                 type="text"
@@ -203,13 +203,15 @@ const AdminPanel = () => {
               <br />
               <ReactQuill
                 theme="snow"
-                className="w-full"
+                className="w-full h-20 md:h-40"
                 modules={modules}
                 formats={formats}
                 value={descE}
                 onChange={setDesc}
               />
-              <div className=' flex gap-4 justify-center items-center'>
+              <br />
+              <br />
+              <br className=" md:hidden" />              <div className=' flex gap-4 justify-center items-center'>
                 <Button onClick={editPost}>
                   Edit
                 </Button>
@@ -223,51 +225,53 @@ const AdminPanel = () => {
             </div>
           </div>
         )}
-        <div className=" rounded-md border">
-          <Table className=" text-sm sm:text-xl">
-            <TableHeader>
-              <TableRow >
-                <TableHead className=" w-max sm:[w-20rem] md:w-[25rem] lg:w-[35rem] text-white">Title</TableHead>
-                <TableHead className=" text-white">Created</TableHead>
-                <TableHead className="sm:w-[100px] text-white">Edit</TableHead>
-                <TableHead className="sm:w-[100px] text-white">Delete</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody className=" h-auto">
-              {
-                (currentPosts.length > 0 ? (
-                  currentPosts.map((post) => (
-                    <TableRow key={post.id}>
-                      <TableCell className=" font-light">{post.title}</TableCell>
-                      <TableCell className=" font-light">{format(new Date(post.createdAt), "MMM d, yyyy")}</TableCell>
-                      <TableCell
-                        className="cursor-pointer pl-4"
-                        onClick={() => handleEditClick(post)}
-                      >
-                        <Pen className=" text-blue-600" />
-                      </TableCell>
-                      <TableCell
-                        className=" pl-6 cursor-pointer"
-                        onClick={() => deletePost(post.id)}
-                      >
-                        <Trash className=" text-red-500" />
+        <div className=" h-[16.5rem]">
+          <div className=" rounded-md border">
+            <Table className=" text-sm sm:text-xl">
+              <TableHeader>
+                <TableRow >
+                  <TableHead className=" w-max sm:[w-20rem] md:w-[25rem] lg:w-[35rem] text-white">Title</TableHead>
+                  <TableHead className=" text-white">Created</TableHead>
+                  <TableHead className="sm:w-[100px] text-white">Edit</TableHead>
+                  <TableHead className="sm:w-[100px] text-white">Delete</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody className=" h-auto">
+                {
+                  (currentPosts.length > 0 ? (
+                    currentPosts.map((post) => (
+                      <TableRow key={post.id}>
+                        <TableCell className=" font-light">{post.title}</TableCell>
+                        <TableCell className=" font-light">{format(new Date(post.createdAt), "MMM d, yyyy")}</TableCell>
+                        <TableCell
+                          className="cursor-pointer pl-4"
+                          onClick={() => handleEditClick(post)}
+                        >
+                          <Pen className=" text-blue-600" />
+                        </TableCell>
+                        <TableCell
+                          className=" pl-6 cursor-pointer"
+                          onClick={() => deletePost(post.id)}
+                        >
+                          <Trash className=" text-red-500" />
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={4} className="text-center font-medium">
+                        No posts available
                       </TableCell>
                     </TableRow>
                   ))
-                ) : (
-                  <TableRow>
-                    <TableCell colSpan={4} className="text-center font-medium">
-                      No posts available
-                    </TableCell>
-                  </TableRow>
-                ))
 
-              }
-            </TableBody>
+                }
+              </TableBody>
 
-          </Table>
+            </Table>
+          </div>
         </div>
-        <Pagination>
+        <Pagination className=" pt-6">
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious className=" cursor-pointer" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)} />

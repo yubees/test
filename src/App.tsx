@@ -15,6 +15,7 @@ import BlogLayout from './pages/components/BlogOutlet';
 import Post from './pages/Post';
 import UserBlog from './pages/UserBlog';
 import Profile from './pages/Profile';
+// import LandingPage from './pages/Landing';
 
 
 function App() {
@@ -69,6 +70,10 @@ function App() {
       path: "/write",
       element: <WritePost />,
     },
+    // {
+    //   path: "/blog",
+    //   element: <LandingPage />,
+    // },
     {
       element: <BlogLayout />,
       children: [
