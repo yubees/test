@@ -47,8 +47,8 @@ const Navbar: React.FC = () => {
     }, [])
 
     return (
-        <div className=' text-white sticky top-0 z-10 bg-black flex justify-between items-center text-lg sm:text-2xl py-2 sm:py-6'>
-            <div className='space-x-4 sm:space-x-10 flex items-center'>
+<div className='text-white sticky top-0 z-10 bg-black bg-opacity-50 backdrop-blur-md flex justify-between text-2xl py-2 sm:py-6'>
+<div className='space-x-4 sm:space-x-10 flex items-center'>
                 <Link className=' link-style' to="/"><Home className=' h-8 w-8'/></Link>
                 <Link className=' link-style' to="/profile">Profile</Link>
             </div>

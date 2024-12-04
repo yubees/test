@@ -33,6 +33,7 @@ const Card: React.FC<CardProps> = ({
                         className="rounded-lg w-full h-full object-cover"
                         src={imgSrc}
                         alt={title}
+                        loading='lazy'
                     />
                     <h1 className="mt-4 text-lg sm:text-lg md:text-1xl lg:text-2xl leading-tight font-semibold truncate overflow-hidden whitespace-nowrap">
                         {title}

@@ -156,6 +156,18 @@ const AdminPanel = () => {
   }
 
   const editPost = async () => {
+    if (titleE.length<1) {
+      alert('Title is required')      
+      return
+    }
+    if (titleE.length>20) {
+      alert('Title should be less than 20 words')      
+      return
+    }
+    if (descE.length<2) {
+      alert('Description required')
+      return
+    }
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API}/post/updatePost/${idE}`,
@@ -169,8 +181,9 @@ const AdminPanel = () => {
         }
       );
 
-      const data = await response.json();
-      console.log(data);
+      await response.json();
+      setTitle("")
+      setDesc("")
       setIsFormVisible(false);
       getUserData()
     } catch (error) {
@@ -182,12 +195,12 @@ const AdminPanel = () => {
     <div className="flex text-white justify-center sm:px-4 w-[100vw] bg-black min-h-[100vh]">
       <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
         <Navbar />
-        <div className=' my-4 pt-8 md:pt-2 pb-4 md:pb-10 flex items-center justify-between'>
-          <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
+        <div className=' pt-14 md:pt-2 pb-4 md:pb-10 flex items-center justify-between'>
+          <h1 className=' text-[2rem] md:text-[3.5rem] text-white'>
             Recent Posts
           </h1>
           <Link to="/write">
-            <Button className='bg-white text-black hover:text-white'>Post</Button>
+            <Button className='bg-white text-black hover:text-white'>Create</Button>
           </Link>
         </div>
         {isFormVisible && (

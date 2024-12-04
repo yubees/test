@@ -18,7 +18,7 @@ const Post: React.FC = () => {
                 <Navbar/>
                 <div className=' flex flex-col justify-center items-center space-y-4'>
                     <p className=' text-slate-300 text-sm font-semibold'>{format(new Date(date), "MMMM d, yyyy")}</p>
-                    <h1 className=' text-md md:text-6xl break-words w-full'>
+                    <h1 className=' text-md md:text-6xl text-center break-words w-full'>
                         {title}
                     </h1>
                     {/* <p className=' text-center text-slate-300 text-xl'>A week of connection, strategy, and learning.</p> */}

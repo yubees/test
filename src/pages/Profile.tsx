@@ -11,9 +11,10 @@ import { Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 interface User {
-  id: number;
+  userId: number;
   fullName: string;
   avatarLink: string;
+  postCount: number
 }
 
 
@@ -44,31 +45,34 @@ const Profile = () => {
     <div className="flex text-white sm:px-4 justify-center w-[100vw] bg-black min-h-[100vh]">
       <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
         <Navbar />
-        <div className=' my-2 md:pt-2 pb-4 md:pb-10 md:my-16 flex w-full justify-center'>
+        <div className=' pt-8 md:pt-2 pb-4 md:pb-10 md:my-16 flex w-full justify-center'>
           <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
             User
           </h1>
 
         </div>
         <div className=" rounded-md border md:mx-20 lg:mx-40">
-          <Table className=" text-sm sm:text-xl">
+          <Table className=" font-semibold text-xl">
 
             <TableBody className=" h-auto">
               {
                 (users.length > 0 ? (
                   users.map((user) => (
-                    <TableRow key={user.id}>
+                    <TableRow key={user.userId}>
                       <Link
                         className="link-style"
                         to={`/posts/${user.fullName}`}
-                        state={{ authorId: user.id, author: user.fullName }}>
-                        <TableCell className=" font-light flex items-center p-4 gap-2">
-                          <Avatar className="h-10 w-10">
-                            <AvatarImage src={user.avatarLink} alt="" />
-                            <AvatarFallback className="text-sm bg-black font-bold">{user.fullName.charAt(0).toUpperCase()}</AvatarFallback>
-                          </Avatar>
+                        state={{ authorId: user.userId, author: user.fullName }}>
+                        <TableCell className=" font-light flex justify-between p-4">
+                          <div className=" flex items-center gap-4">
+                            <Avatar className="h-10 w-10">
+                              <AvatarImage src={user.avatarLink} alt="" />
+                              <AvatarFallback className="text-sm bg-black font-bold">{user.fullName.charAt(0).toUpperCase()}</AvatarFallback>
+                            </Avatar>
+                            <p className="truncate overflow-hidden whitespace-nowrap"> {user.fullName}</p>
+                          </div>
+                          <p>{user.postCount} post</p>
 
-                          {user.fullName}
                         </TableCell>
                       </Link>
 

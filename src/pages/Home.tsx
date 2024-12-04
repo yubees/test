@@ -58,7 +58,7 @@ const Home: React.FC = () => {
             <div className='p-4 w-full text-white flex justify-center items-center'>
                 <div className="max-w-[1200px] w-full">
                     <Navbar />
-                    <div className=' my-2 md:my-4 flex items-center'>
+                    <div className=' mt-16 md:my-4 flex items-center'>
                         <h1 className='  text-[2rem] md:text-[3.5rem] text-white'>
                             Featured Post
                         </h1>

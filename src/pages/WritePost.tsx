@@ -32,8 +32,13 @@ const WritePost = () => {
     try {
       setIsLoading(true);
       if (!title) {
-        console.log(desc.length)
         alert('Title is required')
+        setIsLoading(false);
+        
+        return
+      }
+      if (title.length>20) {
+        alert('Title should be less than 20 words')
         setIsLoading(false);
         
         return
@@ -46,7 +51,6 @@ const WritePost = () => {
       if (desc.length<10) {
         alert('Description should be atleast 10 words')
         setIsLoading(false);
-       
         return
       }
 

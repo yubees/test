@@ -72,7 +72,7 @@ const UserBlog: React.FC = () => {
         <div className="flex text-white justify-center sm:px-4 w-[100vw] bg-black min-h-[100vh]">
             <div className="max-w-[1200px] w-full py-4 px-4 sm:px-0 space-y-2">
                 <Navbar />
-                <div className='my-4 md:pt-2 pb-4 md:pb-10 md:my-16 flex items-center justify-between'>
+                <div className='pt-10 md:pt-2 pb-4 md:pb-10 md:my-16 flex items-center justify-between'>
                     <h1 className='text-[2rem] md:text-[3.5rem] text-white'>
                         {author}  Blog
                     </h1>
